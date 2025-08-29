@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DENVER - Fine Dining Restaurant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+  <script defer src="{{ url_for('static', filename='js/camera-test.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-extrabold text-2xl text-red-600">DENVER</a>
+      <div class="space-x-6 text-gray-700 font-medium">
+        <a href="/" class="hover:text-red-600">Home</a>
+        <a href="/menu" class="hover:text-red-600">Menu</a>
+        <a href="/reserve" class="hover:text-red-600">Reserve</a>
+        <a href="/profile" class="hover:text-red-600">Profile</a>
+        <a href="/admin" class="hover:text-red-600">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Restaurant Image -->
+  <section class="relative bg-gray-900 text-white">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80" 
+         alt="Restaurant" class="w-full h-[450px] object-cover opacity-70">
+    <div class="absolute inset-0 flex items-center justify-center text-center">
+      <div>
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Welcome to DENVER</h1>
+        <p class="text-lg md:text-xl mb-6">Fine Dining • Fresh Ingredients • Exceptional Taste</p>
+        <a href="/menu" class="bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700">
+          Explore Our Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-10">
+    <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">DENVER</h3>
+        <p>Fine Dining Restaurant bringing flavors to life. Serving since 2025.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">Quick Links</h3>
+        <ul>
+          <li><a href="/menu" class="hover:underline">Menu</a></li>
+          <li><a href="/reserve" class="hover:underline">Reserve</a></li>
+          <li><a href="/profile" class="hover:underline">Profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">Contact</h3>
+        <p>Mahalakhminagar, Tumkur</p>
+        <p>Phone: +91 9066603388</p>
+        <p>Email: contact@denver.com</p>
+      </div>
+    </div>
+    <div class="bg-gray-900 text-center py-3 text-sm text-gray-500">
+      © 2025 DENVER. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

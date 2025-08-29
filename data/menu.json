@@ -1,0 +1,237 @@
+[
+  {
+    "id": 1,
+    "name": "Masala Dosa",
+    "category": "South Indian",
+    "veg": true,
+    "price": 120,
+    "tags": [
+      "comfort",
+      "crispy",
+      "spicy",
+      "popular"
+    ],
+    "nutrition": {
+      "cal": 350,
+      "protein": 8,
+      "carb": 55,
+      "fat": 10
+    },
+    "diet": [
+      "veg"
+    ],
+    "rating": 4.6
+  },
+  {
+    "id": 2,
+    "name": "Paneer Butter Masala",
+    "category": "North Indian",
+    "veg": true,
+    "price": 220,
+    "tags": [
+      "rich",
+      "creamy",
+      "celebration",
+      "popular"
+    ],
+    "nutrition": {
+      "cal": 430,
+      "protein": 16,
+      "carb": 30,
+      "fat": 25
+    },
+    "diet": [
+      "veg"
+    ],
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "name": "Chicken Biryani",
+    "category": "Indian Main",
+    "veg": false,
+    "price": 260,
+    "tags": [
+      "aromatic",
+      "festive",
+      "spicy",
+      "popular"
+    ],
+    "nutrition": {
+      "cal": 520,
+      "protein": 24,
+      "carb": 60,
+      "fat": 18
+    },
+    "diet": [],
+    "rating": 4.5
+  },
+  {
+    "id": 4,
+    "name": "Veg Khichdi",
+    "category": "Light Meals",
+    "veg": true,
+    "price": 140,
+    "tags": [
+      "soothing",
+      "light",
+      "comfort",
+      "mild"
+    ],
+    "nutrition": {
+      "cal": 280,
+      "protein": 9,
+      "carb": 48,
+      "fat": 5
+    },
+    "diet": [
+      "veg",
+      "jain"
+    ],
+    "rating": 4.2
+  },
+  {
+    "id": 5,
+    "name": "Greek Salad",
+    "category": "Salad",
+    "veg": true,
+    "price": 180,
+    "tags": [
+      "fresh",
+      "cooling",
+      "crunchy",
+      "healthy"
+    ],
+    "nutrition": {
+      "cal": 190,
+      "protein": 6,
+      "carb": 12,
+      "fat": 12
+    },
+    "diet": [
+      "veg",
+      "keto",
+      "gluten-free"
+    ],
+    "rating": 4.3
+  },
+  {
+    "id": 6,
+    "name": "Dark Chocolate Brownie",
+    "category": "Dessert",
+    "veg": true,
+    "price": 150,
+    "tags": [
+      "sweet",
+      "indulgent",
+      "mood-lift",
+      "celebration"
+    ],
+    "nutrition": {
+      "cal": 420,
+      "protein": 5,
+      "carb": 50,
+      "fat": 22
+    },
+    "diet": [
+      "veg"
+    ],
+    "rating": 4.8
+  },
+  {
+    "id": 7,
+    "name": "Idli Sambar",
+    "category": "South Indian",
+    "veg": true,
+    "price": 90,
+    "tags": [
+      "light",
+      "steamed",
+      "comfort",
+      "healthy"
+    ],
+    "nutrition": {
+      "cal": 280,
+      "protein": 9,
+      "carb": 50,
+      "fat": 4
+    },
+    "diet": [
+      "veg",
+      "jain"
+    ],
+    "rating": 4.4
+  },
+  {
+    "id": 8,
+    "name": "Grilled Chicken Salad",
+    "category": "Salad",
+    "veg": false,
+    "price": 220,
+    "tags": [
+      "lean",
+      "healthy",
+      "cooling",
+      "high-protein"
+    ],
+    "nutrition": {
+      "cal": 260,
+      "protein": 28,
+      "carb": 8,
+      "fat": 10
+    },
+    "diet": [
+      "keto",
+      "gluten-free"
+    ],
+    "rating": 4.4
+  },
+  {
+    "id": 9,
+    "name": "Lemon Coriander Soup",
+    "category": "Soup",
+    "veg": true,
+    "price": 120,
+    "tags": [
+      "light",
+      "soothing",
+      "warm",
+      "comfort"
+    ],
+    "nutrition": {
+      "cal": 90,
+      "protein": 4,
+      "carb": 12,
+      "fat": 2
+    },
+    "diet": [
+      "veg",
+      "jain"
+    ],
+    "rating": 4.1
+  },
+  {
+    "id": 10,
+    "name": "Ragi Dosa",
+    "category": "South Indian",
+    "veg": true,
+    "price": 130,
+    "tags": [
+      "healthy",
+      "fiber",
+      "diabetic-friendly",
+      "light"
+    ],
+    "nutrition": {
+      "cal": 320,
+      "protein": 9,
+      "carb": 45,
+      "fat": 9
+    },
+    "diet": [
+      "veg",
+      "diabetic"
+    ],
+    "rating": 4.0
+  }
+]

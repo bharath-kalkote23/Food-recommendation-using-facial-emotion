@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid md:grid-cols-2 gap-4">
+  <div class="card">
+    <h2 class="text-lg font-semibold mb-2">Profile</h2>
+    <form id="profileForm" class="space-y-2">
+      <input name="name" class="border rounded p-2 w-full" placeholder="Name">
+      <select name="diet" class="border rounded p-2 w-full">
+        <option value="">Any diet</option>
+        <option value="veg">Veg</option>
+        <option value="jain">Jain</option>
+        <option value="keto">Keto</option>
+        <option value="diabetic">Diabetic</option>
+        <option value="gluten-free">Gluten-free</option>
+      </select>
+      <button class="rounded-2xl shadow px-4 py-2 bg-black text-white">Save</button>
+    </form>
+  </div>
+  <div class="card">
+    <h2 class="text-lg font-semibold mb-2">Chatbot</h2>
+    <div id="chat" class="h-64 overflow-auto border rounded p-2 bg-gray-50"></div>
+    <div class="mt-2 flex gap-2">
+      <input id="q" class="border rounded p-2 flex-1" placeholder="Ask about hours, diet options...">
+      <button id="ask" class="rounded-2xl shadow px-4 py-2 bg-black text-white">Ask</button>
+    </div>
+  </div>
+</div>
+<script>
+const chat = document.getElementById('chat');
+function addMsg(sender, text){ const d=document.createElement('div'); d.className='my-1'; d.textContent = sender+': '+text; chat.appendChild(d); chat.scrollTop = chat.scrollHeight; }
+document.getElementById('ask').addEventListener('click', async () => {
+  const q = document.getElementById('q').value.trim();
+  if (!q) return;
+  addMsg('You', q);
+  const res = await fetch('/api/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({q}) });
+  const data = await res.json();
+  addMsg('Bot', data.a);
+  document.getElementById('q').value = '';
+});
+document.getElementById('profileForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const payload = Object.fromEntries(new FormData(e.target).entries());
+  const r = await fetch('/api/profile', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  const j = await r.json();
+  alert(j.message || 'Saved');
+});
+</script>
+{% endblock %}

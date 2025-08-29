@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Menu</h2>
+<div id="menu" class="grid md:grid-cols-2 gap-4"></div>
+<script>
+(async () => {
+  const res = await fetch('/api/menu');
+  const data = await res.json();
+  renderMenuCards(document.getElementById('menu'), data.items);
+})();
+</script>
+{% endblock %}

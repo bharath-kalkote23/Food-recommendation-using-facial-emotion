@@ -1,0 +1,3 @@
+/* Minimal tweaks beyond Tailwind */
+.badge { @apply inline-block px-2 py-0.5 text-xs rounded-full bg-gray-200; }
+.card { @apply rounded-2xl shadow p-4 bg-white; }

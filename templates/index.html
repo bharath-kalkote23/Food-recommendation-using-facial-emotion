@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid md:grid-cols-2 gap-6">
+  <!-- Emotion Detection Section -->
+  <section class="card p-4 bg-white rounded-2xl shadow">
+    <h2 class="text-xl font-semibold mb-2">Detect Emotion</h2>
+    <video id="video" autoplay muted playsinline class="w-full rounded-xl bg-black"></video>
+    
+    <!-- Manual controls -->
+    <div class="mt-3 flex flex-wrap items-center gap-2">
+      <label class="text-sm">or choose:</label>
+      <select id="emotion" class="border rounded p-2">
+        <option>neutral</option><option>happy</option><option>sad</option>
+        <option>angry</option><option>fearful</option><option>surprised</option>
+      </select>
+      <select id="diet" class="border rounded p-2">
+        <option value="">any diet</option>
+        <option value="veg">veg</option>
+        <option value="jain">jain</option>
+        <option value="keto">keto</option>
+        <option value="diabetic">diabetic</option>
+        <option value="gluten-free">gluten-free</option>
+      </select>
+      <button id="capture" class="rounded-2xl shadow px-4 py-2 bg-black text-white">Recommend</button>
+    </div>
+
+    <p class="text-xs text-gray-500 mt-1">
+      Grant camera permission for auto emotion detection, or use the dropdown.
+    </p>
+  </section>
+
+  <!-- Recommendation Section -->
+  <section class="card p-4 bg-white rounded-2xl shadow">
+    <h2 class="text-xl font-semibold mb-2">Recommended for you</h2>
+    <div id="recs" class="space-y-3"></div>
+  </section>
+</div>
+
+<!-- JS Logic -->
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const video = document.getElementById("video");
+    const btn = document.getElementById("capture");
+    const emotionSel = document.getElementById("emotion");
+    const dietSel = document.getElementById("diet");
+    const recs = document.getElementById("recs");
+
+    // Try to start camera
+    try {
+      await FaceAPI.start(video);
+      console.log("Camera started");
+      // Auto-detect loop
+      setInterval(async () => {
+        const { emotion } = await FaceAPI.detectOnce();
+        emotionSel.value = emotion; // update dropdown to show detected
+        fetchRecs(emotion, dietSel.value);
+      }, 4000);
+    } catch (err) {
+      console.warn("Camera not available, using dropdown only.", err);
+    }
+
+    // Manual recommend button
+    btn.addEventListener("click", () => {
+      fetchRecs(emotionSel.value, dietSel.value);
+    });
+
+    // Fetch from Flask backend
+    async function fetchRecs(emotion, diet) {
+      try {
+        const res = await fetch("/api/recommend", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ emotion: emotion, diet: diet, top_k: 5 })
+        });
+        const data = await res.json();
+        renderRecs(data.items || []);
+      } catch (e) {
+        console.error("Failed to fetch recommendations", e);
+      }
+    }
+
+    // Render recommendations
+    function renderRecs(items) {
+      recs.innerHTML = "";
+      if (items.length === 0) {
+        recs.innerHTML = "<p class='text-gray-500'>No items found.</p>";
+        return;
+      }
+      items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "p-3 bg-gray-50 border rounded-lg shadow-sm";
+        card.innerHTML = `
+          <h4 class="font-semibold">${item.name}</h4>
+          <p class="text-sm text-gray-600">${item.category || ""}</p>
+          <p class="text-yellow-600">⭐ ${item.rating || "?"}</p>
+        `;
+        recs.appendChild(card);
+      });
+    }
+  });
+</script>
+{% endblock %}

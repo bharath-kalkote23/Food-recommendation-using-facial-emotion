@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Admin — Reservations</h2>
+<table class="w-full border bg-white rounded-2xl overflow-hidden">
+  <thead class="bg-gray-100">
+    <tr><th class="text-left p-2">Name</th><th class="text-left p-2">Phone</th><th class="text-left p-2">Date</th><th class="text-left p-2">Time</th><th class="text-left p-2">Size</th></tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+<script>
+(async () => {
+  const r = await fetch('/api/reservations');
+  const d = await r.json();
+  const tbody = document.getElementById('rows');
+  (d.items||[]).forEach(x => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="p-2">${x.name}</td><td class="p-2">${x.phone}</td><td class="p-2">${x.date}</td><td class="p-2">${x.time}</td><td class="p-2">${x.size}</td>`;
+    tbody.appendChild(tr);
+  });
+})();
+</script>
+{% endblock %}
