@@ -1,4 +1,4 @@
-# MoodBite — Facial Emotion Based Food Recommendation (Full Project)
+# Facial Emotion Based Food Recommendation 
 
 A smart restaurant web app that personalizes menu recommendations using **facial emotion recognition**, health/diet preferences, and past behavior. It also includes **table reservations**, a **digital menu**, and a lightweight **chatbot**.
 
