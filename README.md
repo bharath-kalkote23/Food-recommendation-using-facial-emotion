@@ -16,7 +16,7 @@ A smart restaurant web app that personalizes menu recommendations using **facial
 - SQLite storage for users, orders, and reservations
 
 ## Tech Stack
-- **Frontend:** HTML, TailwindCSS (CDN), face-api.js (CDN), vanilla JS
+- **Frontend:** HTML, CSS, face-api.js 
 - **Backend:** Flask (Python), REST endpoints
 - **DB:** SQLite (SQLAlchemy models)
 - **Data:** `data/menu.json` (sample items with tags & nutrition)
@@ -44,7 +44,7 @@ http://127.0.0.1:5000
 
 ## Project Structure
 ```
-moodbite/
+fce/
   app.py
   database.py
   models.py
