@@ -26,6 +26,8 @@ A smart restaurant web app that personalizes menu recommendations using **facial
 1) Python 3.10+ recommended.
 2) Create and activate a virtual env
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 ```
 3) Install deps:
 ```bash
